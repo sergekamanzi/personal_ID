@@ -1,0 +1,50 @@
+#!/bin/python3
+import datetime
+
+class PersonalDetails:
+    def __init__(self):
+        self.details = {}
+
+    def add_details(self, name, age, address, email, phone):
+        now = datetime.datetime.now()
+        date_time = now.strftime("%Y-%m-%d %H:%M:%S")
+        self.details['Name'] = name
+        self.details['Age'] = age
+        self.details['Address'] = address
+        self.details['Email'] = email
+        self.details['Phone'] = phone
+        self.details['Date_Time'] = date_time
+
+    def display_details(self):
+        print("Personal Details:")
+        for key, value in self.details.items():
+            print(f"{key}: {value}")
+
+def store_in_server(details):
+    # In a real-world scenario, you would store this data in a database or another server
+    server_storage = []
+    server_storage.append(details)
+    return server_storage
+
+def main():
+    person = PersonalDetails()
+
+    # Get personal details from the user
+    name = input("Enter your name: ")
+    age = input("Enter your age: ")
+    address = input("Enter your address: ")
+    email = input("Enter your email: ")
+    phone = input("Enter your phone number: ")
+
+    # Add details to the PersonalDetails object
+    person.add_details(name, age, address, email, phone)
+
+    # Display the stored details
+    person.display_details()
+
+    # Store details in the server
+    server_data = store_in_server(person.details)
+    print("Details stored in server:", server_data)
+
+if __name__ == "__main__":
+    main()
